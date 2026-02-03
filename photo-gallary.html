@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery - Cultural Movements</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover,
+        .gallery-item:focus {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            outline: none;
+        }
+
+        .gallery-item.focused {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            outline: 3px solid #ffd700;
+            outline-offset: 3px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img,
+        .gallery-item.focused img {
+            transform: scale(1.1);
+        }
+
+        .image-caption {
+            padding: 15px;
+            background: white;
+            text-align: center;
+        }
+
+        .image-caption h3 {
+            color: #667eea;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .image-caption p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .main-display {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .main-display img {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .main-display h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .main-display p {
+            color: #666;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cultural Movements Gallery</h1>
+        <p class="subtitle">Explore iconic moments from art and cultural history - Hover or tab through images</p>
+        
+        <div class="main-display" id="mainDisplay">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=800&q=80" alt="Art Deco architectural detail showing geometric patterns" id="mainImage">
+            <h2 id="mainTitle">Welcome to the Gallery</h2>
+            <p id="mainDescription">Hover over or navigate to any image below to explore different cultural movements</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=600&q=80" 
+                     alt="Art Deco architectural detail featuring golden geometric patterns and symmetrical design elements">
+                <div class="image-caption">
+                    <h3>Art Deco</h3>
+                    <p>Geometric elegance and luxurious design from the 1920s-1930s</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&q=80" 
+                     alt="Bauhaus inspired minimalist architecture with clean lines and functional design">
+                <div class="image-caption">
+                    <h3>Bauhaus</h3>
+                    <p>Form follows function - revolutionary modernist design movement</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=600&q=80" 
+                     alt="Abstract expressionist painting with bold brushstrokes and vibrant colors">
+                <div class="image-caption">
+                    <h3>Abstract Expressionism</h3>
+                    <p>Post-WWII American art emphasizing spontaneous creation</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600&q=80" 
+                     alt="Pop Art style graphic with bright colors and bold commercial imagery">
+                <div class="image-caption">
+                    <h3>Pop Art</h3>
+                    <p>Mass culture meets fine art in this vibrant 1960s movement</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1549887534-1541e9326642?w=600&q=80" 
+                     alt="Psychedelic art featuring swirling patterns and vibrant rainbow colors">
+                <div class="image-caption">
+                    <h3>Psychedelic Art</h3>
+                    <p>Mind-expanding visuals from the counterculture era</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=600&q=80" 
+                     alt="Street art mural showing urban graffiti culture and hip-hop aesthetics">
+                <div class="image-caption">
+                    <h3>Street Art</h3>
+                    <p>Urban expression bringing art from galleries to city walls</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to update the main display
+        function updateMainDisplay(imgSrc, title, description) {
+            const mainImage = document.getElementById('mainImage');
+            const mainTitle = document.getElementById('mainTitle');
+            const mainDescription = document.getElementById('mainDescription');
+            
+            mainImage.src = imgSrc.replace('w=600', 'w=800');
+            mainTitle.textContent = title;
+            mainDescription.textContent = description;
+        }
+
+        // Function to add tabindex attributes on page load
+        function addTabIndexAttributes() {
+            console.log('Page loaded - Adding tabindex attributes to gallery items');
+            
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            for (let i = 0; i < galleryItems.length; i++) {
+                galleryItems[i].setAttribute('tabindex', '0');
+                console.log(`Added tabindex to gallery item ${i + 1}`);
+            }
+            
+            console.log(`Total gallery items made keyboard accessible: ${galleryItems.length}`);
+        }
+
+        // Initialize gallery on page load
+        window.onload = function() {
+            addTabIndexAttributes();
+            
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach((item, index) => {
+                const img = item.querySelector('img');
+                const title = item.querySelector('h3').textContent;
+                const description = item.querySelector('p').textContent;
+                const imgSrc = img.src;
+                
+                // Mouse events
+                item.onmouseover = function() {
+                    console.log(`Mouse over: ${title}`);
+                    updateMainDisplay(imgSrc, title, description);
+                };
+                
+                item.onmouseleave = function() {
+                    console.log(`Mouse left: ${title}`);
+                };
+                
+                // Keyboard focus events
+                item.onfocus = function() {
+                    console.log(`Focused on: ${title}`);
+                    this.classList.add('focused');
+                    updateMainDisplay(imgSrc, title, description);
+                };
+                
+                item.onblur = function() {
+                    console.log(`Blur from: ${title}`);
+                    this.classList.remove('focused');
+                };
+                
+                // Click event for mobile
+                item.onclick = function() {
+                    console.log(`Clicked: ${title}`);
+                    updateMainDisplay(imgSrc, title, description);
+                };
+            });
+            
+            console.log('All event listeners attached successfully!');
+        };
+    </script>
+</body>
+</html>
